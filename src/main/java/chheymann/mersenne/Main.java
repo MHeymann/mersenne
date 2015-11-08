@@ -20,8 +20,8 @@ public class Main {
         Statistics stats = new Statistics();
         CountDownLatch latch = new CountDownLatch(STATS_BATCH_SIZE);
         int submittedJobs = 0;
-        for (int prime : primeSource) {
-            MersenneChecker checker = new MersenneChecker(prime, primeSource, stats, latch);
+        for (final int prime : primeSource) {
+            final MersenneChecker checker = new MersenneChecker(prime, primeSource, stats, latch);
             executor.submit(new Runnable() {
                 @Override
                 public void run() {
